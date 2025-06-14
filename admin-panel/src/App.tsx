@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import { Deshboard } from "./pages/Dashboard"
+import { Deshboard } from "./pages/deshbord/Dashboard"
 import { AnimalsDeshboard } from "./pages/AnimalsDeshboard"
 import { KategoriDeshboard } from "./pages/KategoriDeshboaard"
 import { AdminLayout } from "./pages/AdminLayot"
