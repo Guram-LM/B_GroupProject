@@ -1,13 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { featchAnimals, featchKategori } from "./getThunks"
+import type { IAnimals, Ikategory,} from "../../interface/Interface";
 
-
-const initialState = {
+interface GetState {
+  animals: IAnimals[];
+  kategori: Ikategory[]; 
+  loading: boolean;
+  error: string | null;
+}
+const initialState:GetState = {
     animals: [],
     kategori: [],
     loading: false,
     error: null
 }
+
 
 
 const sliceGet = createSlice({
@@ -26,7 +33,7 @@ const sliceGet = createSlice({
         })
         .addCase(featchAnimals.rejected, (state, action) => {
             state.loading = false,
-            state.error = action.payload
+            state.error = action.payload as string
         })
 
 
@@ -40,7 +47,7 @@ const sliceGet = createSlice({
         })
         .addCase(featchKategori.rejected, (state, action) => {
             state.loading = false,
-            state.error = action.payload
+            state.error = action.payload as string
         })
     }
     

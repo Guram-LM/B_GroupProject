@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { postThunk } from "./postThunks"
 
-const initialState = {
+interface PostState{
+    loading: boolean,
+    error: string | null
+}
+
+const initialState:PostState = {
     loading: false,
     error: null
 }
@@ -22,7 +27,7 @@ const slicePost = createSlice({
         })
         .addCase(postThunk.rejected, (state, aktion) => {
             state.loading = false;
-            state.error = aktion.payload
+            state.error = aktion.payload as string
         })
 
     }

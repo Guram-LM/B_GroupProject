@@ -1,13 +1,18 @@
-export interface IData {
+export interface IAnimals {
     name: string,
     age: string,
     price: number | string
 }
 
+export interface Ikategory {
+    kategory: string,
+    description: string
+}
+
 // Thunk პარამეტრები
 export interface IPostProps {
   resource: string
-  formData: IData
+  formData: IAnimals
 }
 
 export interface IResource{
@@ -18,7 +23,11 @@ export interface IResource{
 
 
 
-export interface IRowData {
+export interface IRowDataAnimals {
     id: string,
-    data: IData
+    data: IAnimals
+}
+export interface IRowDataKategory {
+    id: string,
+    data: Ikategory
 }
