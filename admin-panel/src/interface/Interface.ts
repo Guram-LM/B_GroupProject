@@ -1,7 +1,15 @@
 export interface IAnimals {
-    name: string,
-    age: string,
-    price: number | string
+    name: string;
+    description: string;
+    weight: string;
+    height: string;
+    color: string;
+    age: string;
+    price: string;
+    quantity: string;
+    gender: "male" | "female";
+    vaccinated: "yes" | "no";
+    microchipped: "yes" | "no"; 
 }
 
 export interface Ikategory {
