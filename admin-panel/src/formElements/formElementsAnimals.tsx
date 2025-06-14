@@ -1,6 +1,14 @@
+import type { ChangeEvent, FormEvent } from "react";
+import type { IAnimals } from "../interface/Interface";
 import { Addbutton, AnimalsForm, ButtonWrapper, Cancelbutton } from "./StyledInputs";
 
-export const AnimalForm = ({value, onChange, onSubmit}) => {
+interface AnimalFormProps {
+  value: IAnimals;
+  onChange: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+}
+
+export const AnimalForm = ({value, onChange, onSubmit}: AnimalFormProps) => {
   return (
     <AnimalsForm onSubmit={onSubmit}>
       <input type="text" name="name" placeholder="Name" value={value.name} onChange={onChange}/>
