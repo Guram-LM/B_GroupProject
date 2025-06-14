@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_KEY, BASE_URL } from "../../apiConfig/apiConfig";
-import type { IData, IResource, IRowData} from "../../interface/Interface";
+import type { IAnimals, Ikategory, IResource, IRowDataAnimals, IRowDataKategory} from "../../interface/Interface";
 
 
 
@@ -16,8 +16,8 @@ export const featchAnimals = createAsyncThunk(
             }  
         })
             if(!rouData.ok) throw new Error("Something went wrong");
-            const result: IRowData[] = await rouData.json()
-            const payload:IData[] = result.map((item) => ({id: item.id, ...item.data}))
+            const result: IRowDataAnimals[] = await rouData.json()
+            const payload:IAnimals[] = result.map((item) => ({id: item.id, ...item.data}))
             return thunkAPI.fulfillWithValue(payload)
             
         } catch (error) {
@@ -39,8 +39,8 @@ export const featchKategori = createAsyncThunk(
             }  
         })
             if(!rouData.ok) throw new Error("Something went wrong");
-            const result: IRowData[] = await rouData.json()
-            const payload:IData[] = result.map((item) => ({id: item.id, ...item.data}))
+            const result: IRowDataKategory[] = await rouData.json()
+            const payload:Ikategory[] = result.map((item) => ({id: item.id, ...item.data}))
             return thunkAPI.fulfillWithValue(payload)
             
         } catch (error) {
