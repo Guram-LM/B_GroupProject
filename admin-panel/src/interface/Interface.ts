@@ -16,6 +16,25 @@ export interface IAnimals {
     categoryId: string;
 }
 
+export interface IItems {
+    id: string,
+    img: string,
+    name: string;
+    description: string;
+    weight: string;
+    height: string;
+    color: string;
+    age: string;
+    price: string;
+    quantity: string;
+    gender: "male" | "female";
+    vaccinated: "yes" | "no";
+    microchipped: "yes" | "no";
+    isPopular: boolean;
+    categoryId: string;
+}
+
+
 export interface Ikategory {
     id?: string,
     kategoryName: string,
@@ -29,7 +48,7 @@ export interface IPostProps {
 }
 
 
-export interface IPostProps {
+export interface IupdataProps {
   resource: string
   updatedData: IAnimals | Ikategory
   id: string

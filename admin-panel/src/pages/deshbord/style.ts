@@ -1,4 +1,5 @@
 // style.ts
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const DeshbordStyle = styled.div`
@@ -18,7 +19,7 @@ export const GrirWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled(Link)`
    display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
@@ -28,11 +29,11 @@ export const CardWrapper = styled.div`
   max-height: 100%;
   background-color: #fff;
   padding: 20px;
-  cursor: pointer;
+  text-decoration:none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   &:active {
     transform: translateY(0px);
