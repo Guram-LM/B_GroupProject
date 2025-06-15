@@ -1,41 +1,100 @@
-
+// style.ts
 import styled from "styled-components";
 
+export const DeshbordStyle = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+  box-sizing: border-box;
+`;
+// cards style
 
-export const GrirWrapper=styled.div`
-display:grid;
-grid-template-columns:1fr 1fr 1fr;
-width: 100%;
-max-width: 1200px;
-box-sizing:border-box;
-margin: 0 auto;
-gap:20px;
-gap:20px;
-`
+export const GrirWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 1200px;
+  gap: 20px;
+  box-sizing: border-box;
+`;
 
-export const CardWrapper =styled.div`
-display:flex;
-flex-direction:column;
-width: 100%;
-height: 400px;
-box-sizing:border-box;
-padding:15px;
-gap:10px;
-border-radius:10px;
-`
+export const CardWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 100%;
+  background-color: #fff;
+  padding:20px;
+`;
 
 export const ImgWrapper = styled.div`
-display:flex;
-width: 100%;
-box-sizing:border-box;
-overflow:hidden;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius:10px 10px 0 0;
+  margin-bottom:20px;
+  
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+export const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h1 {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  h3 {
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    margin: 0;
+    border-radius:10px;
+    padding:10px 15px; 
+    background-color:blue;
+    max-width: max-content;
+  }
+
+  h4{
+    color:green;
+    font-weight:bolder;
+    margin: 0;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+    color: #444;
+  }
+
 `
 
-export const CardContent =styled.div`
-display:flex;
-flex-direction:column;
-gap:10px;
-width:100%;
+export const PopulatStile = styled.div`
+    display:flex;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content:space-between;
+    align-items:center;
+
+h4{
+    display:inline-block;
+    max-width:max-content;
+    padding:10px 20px;
+    background-color:red;
+    border-radius:10px;
+    border:1px solid black;
+    color:white;
+}
 
 `
-
