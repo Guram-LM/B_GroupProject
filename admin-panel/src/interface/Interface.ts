@@ -1,4 +1,6 @@
 export interface IAnimals {
+    id?: string,
+    img: string,
     name: string;
     description: string;
     weight: string;
@@ -9,18 +11,21 @@ export interface IAnimals {
     quantity: string;
     gender: "male" | "female";
     vaccinated: "yes" | "no";
-    microchipped: "yes" | "no"; 
+    microchipped: "yes" | "no";
+    isPopular: boolean;
+    categoryId: string;
 }
 
 export interface Ikategory {
-    kategory: string,
+    id?: string,
+    kategoryName: string,
     description: string
 }
 
 // Thunk პარამეტრები
 export interface IPostProps {
   resource: string
-  formData: IAnimals
+  formData: IAnimals | Ikategory
 }
 
 export interface IResource{

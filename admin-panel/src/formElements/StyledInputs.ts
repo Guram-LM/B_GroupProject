@@ -46,6 +46,8 @@ export const Addbutton  = styled.button`
   background-color:blue;
   color:white;
   box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
   &:hover{
   background-color:green;
   }
@@ -60,6 +62,8 @@ export const Cancelbutton  = styled.button`
   background-color:grey;
   color:white;
   box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
   &:hover{
   background-color:red;
   }
