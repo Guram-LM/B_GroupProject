@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { Deshboard } from "./pages/deshbord/Dashboard"
 import { AnimalsDeshboard } from "./pages/AnimalsDeshboard"
-import { KategoriDeshboard } from "./pages/KategoriDeshboaard"
+import { KategoriDeshboard } from "./pages/kategory/KategoriDeshboaard"
 import { AdminLayout } from "./pages/AdminLayot"
 
 

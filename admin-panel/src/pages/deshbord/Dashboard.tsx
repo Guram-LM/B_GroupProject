@@ -1,12 +1,12 @@
 import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { featchAnimals } from "../../store/get/getThunks"
 import { CardContent, CardWrapper, GrirWrapper, ImgWrapper } from "./style"
 
 export const Deshboard = () => {
 
-    const {animals, loading, error} = useSelector(state => state.get)
-    const dispatch = useDispatch()
+    const {animals, loading, error} = useAppSelector(state => state.get)
+    const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(featchAnimals({resource:"animals"}))
 
