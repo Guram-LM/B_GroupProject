@@ -3,6 +3,8 @@ import { Deshboard } from "./pages/deshbord/Dashboard"
 import { AnimalsDeshboard } from "./pages/AnimalsDeshboard"
 import { KategoriDeshboard } from "./pages/kategory/KategoriDeshboaard"
 import { AdminLayout } from "./pages/AdminLayot"
+import { DetailedPage } from "./pages/detailed/detailedPage"
+import { EditdPage } from "./pages/edit/edit"
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route index element={<Deshboard/>} />
         <Route path="animals" element={<AnimalsDeshboard/>} />
         <Route path="kategori" element={<KategoriDeshboard/>} />
+        <Route path="detailedPage/:id" element={<DetailedPage/>} />
+         <Route path="edit/:id" element={<EditdPage/>} />
 
       </Route>
 

@@ -12,7 +12,7 @@ export const AnimalsDeshboard = () => {
   const {kategori} = useAppSelector((state) => state.get)
 
       useEffect(() => {
-          dispatch(featchKategori({resource:"kategory"}))
+      dispatch(featchKategori({resource:"kategory"}))
   
   },[])
 
@@ -46,7 +46,7 @@ export const AnimalsDeshboard = () => {
 
     if (postThunk.fulfilled.match(action)) {
       alert("Successful");
-      setvalue({
+      setvalue({ 
         img: "",
         name: "",
         description: "",

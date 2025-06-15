@@ -25,7 +25,7 @@ export const Deshboard = () => {
                 const category =kategori.find(cat => cat.id === item.categoryId)
                 const categoryName = category?.kategoryName || "Non category"
                 return(
-                <CardWrapper key={item.id}>
+                <CardWrapper to={`/detailedPage/${item.id}`} key={item.id} state={{item, categoryName}}>
                     
                     <ImgWrapper>
                         <img src={item.img} alt="" />

@@ -1,11 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_KEY, BASE_URL } from "../../apiConfig/apiConfig";
-import type { IPostProps, IUpdateResponse } from "../../interface/Interface";
+import type { IupdataProps, IUpdateResponse } from "../../interface/Interface";
 
 
 
 
-export const updateThunk = createAsyncThunk<IUpdateResponse, IPostProps, { rejectValue: string }>(
+export const updateThunk = createAsyncThunk<IUpdateResponse, IupdataProps, { rejectValue: string }>(
   "data/update",
   async ({ id, updatedData, resource }, ThunkAPI) => {
     try {
