@@ -19,7 +19,7 @@ export const GrirWrapper = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-  display: flex;
+   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -27,7 +27,16 @@ export const CardWrapper = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-height: 100%;
   background-color: #fff;
-  padding:20px;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  &:active {
+    transform: translateY(0px);
+  }
 `;
 
 export const ImgWrapper = styled.div`
@@ -62,7 +71,7 @@ export const CardContent = styled.div`
     margin: 0;
     border-radius:10px;
     padding:10px 15px; 
-    background-color:blue;
+    background-color:#4682B4;
     max-width: max-content;
   }
 
@@ -75,9 +84,8 @@ export const CardContent = styled.div`
   p {
     font-size: 14px;
     margin: 0;
-    color: #444;
+    color: #C0C0C0;;
   }
-
 `
 
 export const PopulatStile = styled.div`
@@ -93,8 +101,8 @@ h4{
     padding:10px 20px;
     background-color:red;
     border-radius:10px;
-    border:1px solid black;
-    color:white;
+    border:1px solid #FFA07A;
+    color:#FFA07A;
 }
 
 `

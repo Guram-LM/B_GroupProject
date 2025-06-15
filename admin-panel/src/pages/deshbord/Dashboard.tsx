@@ -23,7 +23,6 @@ export const Deshboard = () => {
         <GrirWrapper>
              {animals.map(item =>{ 
                 const category =kategori.find(cat => cat.id === item.categoryId)
-
                 const categoryName = category?.kategoryName || "Non category"
                 return(
                 <CardWrapper key={item.id}>
