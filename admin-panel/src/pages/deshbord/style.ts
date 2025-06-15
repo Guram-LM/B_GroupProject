@@ -8,6 +8,8 @@ export const DeshbordStyle = styled.div`
   justify-content: center;
   padding: 40px 0;
   box-sizing: border-box;
+  background-color:#F8F8FF;
+  margin:0;
 `;
 // cards style
 
@@ -17,10 +19,11 @@ export const GrirWrapper = styled.div`
   width: 1200px;
   gap: 20px;
   box-sizing: border-box;
+
 `;
 
 export const CardWrapper = styled(Link)`
-   display: flex;
+  display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -95,15 +98,17 @@ export const PopulatStile = styled.div`
     box-sizing: border-box;
     justify-content:space-between;
     align-items:center;
+    padding:0;
 
 h4{
-    display:inline-block;
+   display:inline-block;
     max-width:max-content;
     padding:10px 20px;
-    background-color:red;
+    background-color:#FFDAB9;
     border-radius:10px;
-    border:1px solid #FFA07A;
-    color:#FFA07A;
+    border:1px solid #E9967A;
+    color:#E9967A;
+    margin:0;
 }
 
 `
