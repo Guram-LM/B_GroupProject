@@ -1,14 +1,16 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../store/hook";
-import { featchAnimals } from "../../store/get/getThunks"
-import { CardContent, CardWrapper, GrirWrapper, ImgWrapper } from "./style"
+import { featchAnimals, featchKategori } from "../../store/get/getThunks"
+import { CardContent, CardWrapper, DeshbordStyle, GrirWrapper, ImgWrapper, PopulatStile } from "./style"
 
 export const Deshboard = () => {
 
-    const {animals, loading, error} = useAppSelector(state => state.get)
+    const {animals,kategori, loading, error} = useAppSelector(state => state.get)
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(featchAnimals({resource:"animals"}))
+        dispatch(featchKategori({ resource: "kategory" }))
+        
 
     },[])
 
@@ -16,10 +18,14 @@ export const Deshboard = () => {
     if (error) return <h1>{error}</h1>;
 
     return(
-       <div >
+       <DeshbordStyle>
 
         <GrirWrapper>
-             {animals.map(item => 
+             {animals.map(item =>{ 
+                const category =kategori.find(cat => cat.id === item.categoryId)
+
+                const categoryName = category?.kategoryName || "Non category"
+                return(
                 <CardWrapper key={item.id}>
                     
                     <ImgWrapper>
@@ -28,20 +34,21 @@ export const Deshboard = () => {
 
                     <CardContent>
                         <h1>{item.name}</h1>
-                        <h3>cateory</h3>
-                        <p>{item.price}</p>
+                        <h3>{categoryName}</h3>
+                        <h4>{item.price} ₾</h4>
                         <p>{item.description}</p>
                     </CardContent>
 
-                    <div>
-                        <p>{item.quantity}</p>
-                        <p>popular</p>
-                    </div>
+                    <PopulatStile>
+                        <p>stock: {item.quantity}</p>
+                        {item.isPopular?(<h4>Popular</h4>): ("")}
+                    </PopulatStile>
 
                 </CardWrapper>
-            )}
+            )})}
+            
             </GrirWrapper>
             
-        </div>
+        </DeshbordStyle>
     )
 }
