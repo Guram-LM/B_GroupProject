@@ -1,11 +1,14 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import slicePost from "./post/slicePost"
 import sliceGet from "./get/sliceGet"
-
+import sliceUpdate from "./update/SliceUpdate"
+import sliceDelete from "./delete/SliceDelete"
 
 const rootReduser = combineReducers({
     post: slicePost,
-    get: sliceGet
+    get: sliceGet,
+    update: sliceUpdate,
+    delete: sliceDelete
 
 })
 

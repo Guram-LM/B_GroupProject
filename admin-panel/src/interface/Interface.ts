@@ -28,6 +28,34 @@ export interface IPostProps {
   formData: IAnimals | Ikategory
 }
 
+
+export interface IPostProps {
+  resource: string
+  updatedData: IAnimals | Ikategory
+  id: string
+}
+export interface IUpdateResponse {
+  resource: string
+  data: IAnimals | Ikategory
+  id: string
+}
+
+
+
+export interface IDeleteProps {
+  resource: string
+  id: string
+}
+export interface IDeleteResponse {
+  resource: string
+  id: string
+}
+
+
+
+
+
+
 export interface IResource{
     resource: string
 }
