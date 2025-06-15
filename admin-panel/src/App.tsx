@@ -18,7 +18,7 @@ function App() {
         <Route path="animals" element={<AnimalsDeshboard/>} />
         <Route path="kategori" element={<KategoriDeshboard/>} />
         <Route path="detailedPage/:id" element={<DetailedPage/>} />
-         <Route path="edit/:id" element={<EditdPage/>} />
+         <Route path="edit" element={<EditdPage/>} />
 
       </Route>
 

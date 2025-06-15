@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import type { IItems } from "../../interface/Interface"
 import { useAppDispatch} from "../../store/hook"
 import { deleteThunk } from "../../store/delete/DeleteThunks"
+import { Back, BluButtom, ButtonColor, CardContant, CardContinerWrapper, CardDescription, CardImg, CardsButton, CardSection, ContantName, DetailedPageStyle, HomeContiner, RedButtom  } from "./Style"
 
 
 
@@ -24,56 +25,61 @@ export const DetailedPage = () => {
     }
 
 
-
     return(
 
-        <div>
+        <DetailedPageStyle>
+            
+        <ContantName>
           
-        <Link to= {"/"}>&larr; Bck to Pets</Link>
+            <Back to= {"/"}>&larr; Bck to Pets</Back>
 
-        <div>
-                <div>
-                    <div>
-                        <img src={item.img}alt="" />
-                    </div>
-                    <div>
-                        <h1>{item.name}</h1>
-                            <h3>{categoryName}</h3>
-                        <div>
+            <HomeContiner>
+                        <CardSection>
+                            <CardImg>
+                                <img src={item.img}alt="" />
+                            </CardImg>
+                            <CardContant>
+                                <h1>{item.name}</h1>
+                                    <h3>{categoryName}</h3>
+                                <CardContinerWrapper>
 
-                           <div>
-                            <p>Stock</p>
-                            <p>{item.quantity}</p> 
-                           </div>
+                                    <ButtonColor>
+                                        <p>GEL Price</p>
+                                        <h5>₾ {item.price}</h5> 
+                                    </ButtonColor>
 
-                            <div>
-                            <p>Price</p>
-                            <p>{item.price}</p> 
-                            </div>
-                        </div>
-                         {item.isPopular?(<h4>Popular</h4>): ("")}
-                    </div>
+                                    <ButtonColor>
+                                        <p>Stock</p>
+                                        <p>{item.quantity}</p> 
+                                     </ButtonColor>
 
-                </div>
+                                </CardContinerWrapper>
+                                {item.isPopular?(<h4>Popular</h4>): ("")}
+                            </CardContant>
 
-                <div>
-                    <h3>Description</h3>
-                    <p>{item.description}</p>
+                        </CardSection>
 
-                </div>
+                        <CardDescription>
+                            <h3>Description</h3>
+                            <p>{item.description}</p>
 
-
-                <div>
-                    <button onClick={() => deletefunction(item.id, "animals") }>Delete Pat</button>
-
-                    <button>Edit Pet</button>
-                </div>
-
-        </div>
+                        </CardDescription>
 
 
-        </div>
+                        <CardsButton>
+                            <BluButtom onClick={() => deletefunction(item.id, "animals") }>Delete Pat</BluButtom>
+
+                            <RedButtom onClick={() => navigate("/edit", { state: { item, categoryName } })}>Edit Pet</RedButtom>
+                        </CardsButton>
+
+                </HomeContiner>
+
+
+        </ContantName>
         
+
+        </DetailedPageStyle>
+
     )
 
     
