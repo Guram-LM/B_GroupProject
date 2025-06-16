@@ -4,6 +4,8 @@ import type { IAnimals } from "../interface/Interface";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { postThunk } from "../store/post/postThunks";
 import { featchKategori } from "../store/get/getThunks";
+import { FormPageStyle } from "../formElements/StyledInputs";
+import { Back } from "./detailed/Style";
 
 export const AnimalsDeshboard = () => {
   const dispatch = useAppDispatch();
@@ -70,5 +72,12 @@ export const AnimalsDeshboard = () => {
   if (loading) return <h1>Loading ...</h1>;
   if (error) return <h1>{error}</h1>;
 
-  return <AnimalForm value={value} onChange={onChange} onSubmit={onSubmit} categories={kategori}/>;
+  return (
+    
+    <FormPageStyle>
+        <Back to= {"/"}>&larr; Bck to Pets</Back>
+        <AnimalForm value={value} onChange={onChange} onSubmit={onSubmit} categories={kategori}/>
+    </FormPageStyle>
+
+  )
 };

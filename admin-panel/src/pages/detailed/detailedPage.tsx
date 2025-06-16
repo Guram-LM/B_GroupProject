@@ -3,6 +3,7 @@ import type { IItems } from "../../interface/Interface"
 import { useAppDispatch} from "../../store/hook"
 import { deleteThunk } from "../../store/delete/DeleteThunks"
 import { Back, BluButtom, ButtonColor, CardContant, CardContinerWrapper, CardDescription, CardImg, CardsButton, CardSection, ContantName, DetailedPageStyle, HomeContiner, RedButtom  } from "./Style"
+import { useConverter } from "../../hook/Converter"
 
 
 
@@ -20,9 +21,12 @@ export const DetailedPage = () => {
 
         dispatch(deleteThunk({resource, id}))
         .then(() => navigate("/"))
-
-
     }
+
+
+
+    const priceNumber = Number(item.price);
+    const { convertedAmount } = useConverter(priceNumber);
 
 
     return(
@@ -47,6 +51,16 @@ export const DetailedPage = () => {
                                         <p>GEL Price</p>
                                         <h5>₾ {item.price}</h5> 
                                     </ButtonColor>
+
+                                    <ButtonColor>
+                                        <p>USD Price</p>
+                                        {convertedAmount !== null ? (
+                                            <h2>${convertedAmount.toFixed(2)}</h2>
+                                        ) : (
+                                            <h5>Loading...</h5>
+                                        )}
+                                    </ButtonColor>
+                                    
 
                                     <ButtonColor>
                                         <p>Stock</p>

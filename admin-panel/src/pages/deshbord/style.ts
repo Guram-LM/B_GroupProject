@@ -3,24 +3,52 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const DeshbordStyle = styled.div`
-  width: 100%;
   display: flex;
+  width: 1200px;
+  flex-direction: column;
   justify-content: center;
-  padding: 40px 0;
+  gap: 50px;
   box-sizing: border-box;
-  background-color:#F8F8FF;
-  margin:0;
+  margin: 0 auto 50px;
+  
 `;
 // cards style
 
 export const GrirWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 1200px;
+  width: 100%;
+  margin:0;
   gap: 20px;
   box-sizing: border-box;
+`
+export const AnimalsHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing:border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: white;
+`
+export const AddAnimalHeder = styled(Link)`
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 100%;
+  background-color:#4682B4;
+  padding: 15px 30px;
+  text-decoration:none;
+  color: white;
+  &:hover {
+  background-color:blue;
+  }
+ 
+`
 
-`;
+
 
 export const CardWrapper = styled(Link)`
   display: flex;
@@ -41,7 +69,7 @@ export const CardWrapper = styled(Link)`
   &:active {
     transform: translateY(0px);
   }
-`;
+`
 
 export const ImgWrapper = styled.div`
   width: 100%;

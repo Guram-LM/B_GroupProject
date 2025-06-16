@@ -1,6 +1,6 @@
 import type { ChangeEvent, FormEvent } from "react";
 import type { IAnimals, Ikategory } from "../interface/Interface";
-import { Addbutton, AnimalsForm, ButtonWrapper, Cancelbutton } from "./StyledInputs";
+import { Addbutton, AnimalsForm, ButtonWrapper, Cancelbutton, CekeSection } from "./StyledInputs";
 
 interface AnimalFormProps {
   value: IAnimals;
@@ -12,6 +12,7 @@ interface AnimalFormProps {
 export const AnimalForm = ({value,categories, onChange, onSubmit}: AnimalFormProps) => {
   return (
     <AnimalsForm onSubmit={onSubmit}>
+      <h1>Add New Pet</h1>
       <input type="text" name="img" placeholder="img" value={value.img} onChange={onChange}/>
 
       <label htmlFor="categoryId">Category:</label>
@@ -55,10 +56,12 @@ export const AnimalForm = ({value,categories, onChange, onSubmit}: AnimalFormPro
           <option value="no">No</option>
       </select>
 
-
+    <CekeSection>
       <label> 
-        <input type="checkbox" name="isPopular" checked={value.isPopular} onChange={onChange} /> Popular
+        Popular  <input type="checkbox" name="isPopular" checked={value.isPopular} onChange={onChange} /> 
       </label>
+    </CekeSection>
+      
 
 
         <ButtonWrapper>
