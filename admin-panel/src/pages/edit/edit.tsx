@@ -4,6 +4,8 @@ import type { IAnimals, IItems } from "../../interface/Interface"
 import { useAppDispatch, useAppSelector } from "../../store/hook"
 import { useState } from "react"
 import { updateThunk } from "../../store/update/UpdateThunks"
+import { FormPageStyle } from "../../formElements/StyledInputs"
+import { Back } from "../detailed/Style"
 
 export const EditdPage = () => {
   const location = useLocation()
@@ -17,8 +19,6 @@ export const EditdPage = () => {
     ...item,
   })
 
-
-  
     const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const { name, value, type, checked } = e.target as HTMLInputElement
       setFormData((prev) => ({ 
@@ -30,8 +30,7 @@ export const EditdPage = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    dispatch(
-      updateThunk({
+    dispatch(updateThunk({
         id: item.id,
         resource: "animals",
         updatedData: formData,
@@ -39,26 +38,19 @@ export const EditdPage = () => {
     )
       .unwrap()
       .then(() => {
-        navigate("/") // ან დაბრუნება დეტალურ გვერდზე
+        navigate("/") 
       })
       .catch((err) => {
         console.error("Update Error:", err)
       })
   }
-  console.log("SENDING DATA:", {
-  id: item.id,
-  resource: "animals",
-  updatedData: formData,
-})
-
-console.log("updatedData to be sent:", JSON.stringify({ data: [formData] }, null, 2));
+ 
   return (
-    <AnimalForm
-      value={formData}
-      onChange={onChange}
-      onSubmit={handleSubmit}
-      categories={kategori || []}
-    />
+
+    <FormPageStyle>
+      <Back to= {"/"}>&larr; Bck to Pets</Back>
+      <AnimalForm value={formData} onChange={onChange} onSubmit={handleSubmit} categories={kategori || []} />
+    </FormPageStyle>
   )
 }
 

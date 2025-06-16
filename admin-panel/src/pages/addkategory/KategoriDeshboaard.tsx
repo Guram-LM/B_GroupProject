@@ -3,6 +3,8 @@ import { KategoryForm } from "../../formElements/formElementsCategory"
 import type { Ikategory } from "../../interface/Interface"
 import { useAppDispatch, useAppSelector } from "../../store/hook"
 import { postThunk } from "../../store/post/postThunks"
+import { Back } from "../detailed/Style"
+import { FormPageStyle } from "../../formElements/StyledInputs"
 
 export const KategoriDeshboard = () => {
 
@@ -44,6 +46,10 @@ export const KategoriDeshboard = () => {
     if (loading) return <h1>Loading ...</h1>;
     if (error) return <h1>{error}</h1>;
     return(
-        <KategoryForm value={kategoriValue} onChange={onChange} onSubmit={onSubmit} />
+        <FormPageStyle>
+            <Back to= {"/"}>&larr; Bck to Pets</Back>
+            <KategoryForm value={kategoriValue} onChange={onChange} onSubmit={onSubmit} />
+        </FormPageStyle>
+        
     )
 }

@@ -13,8 +13,8 @@ gap:20px;
 `
 export const Back = styled(Link)`
 display:flex;
-width:100px;
-padding:10px 15px;
+width:130px;
+padding:15px 45px;
 border-radius:10px;
 background-color:#DCDCDC;
 text-decoration:none;
@@ -93,18 +93,24 @@ display:flex;
 flex-direction:column;
 box-sizing:border-box;
 margin:0;
-padding:20px;
+padding:25px 60px;
 gap:10px;
 
 p{
     margin:0;
 }
+h2{
+  margin:0;
+  color:green; 
+  font-size:18px;
+  font-weight:bolder;
+}
 
 h5{
-   margin:0;
-   color:red; 
-   font-size:18px;
-   font-weight:bolder;
+  margin:0;
+  color:red; 
+  font-size:18px;
+  font-weight:bolder;
 }
 
 
@@ -113,12 +119,12 @@ background-color:#F5F5F5;
 border-radius:10px;
 justify-content:center;
 align-items:center;
-width:200px;
+width:250px;
 `
 export const CardContinerWrapper = styled.div  `
 display:flex;
 box-sizing:border-box;
-gap:10px;
+gap:50px;
 width:100%;
 `
 export const CardDescription = styled.div `
@@ -162,7 +168,6 @@ border-radius:10px;
 color:white;
 cursor:pointer;
 `
-
 
 export const BluButtom = styled.div`
 display:flex;

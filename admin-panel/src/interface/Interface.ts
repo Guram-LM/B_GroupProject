@@ -40,6 +40,11 @@ export interface Ikategory {
     kategoryName: string,
     description: string
 }
+export interface IkategoryId {
+    id: string,
+    kategoryName: string,
+    description: string
+}
 
 // Thunk პარამეტრები
 export interface IPostProps {

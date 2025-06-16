@@ -1,8 +1,7 @@
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_KEY, BASE_URL } from "../../apiConfig/apiConfig";
 import type { IupdataProps, IUpdateResponse } from "../../interface/Interface";
-
-
+import { API_KEY, BASE_URL } from "../../apiConfig/apiConfig";
 
 
 export const updateThunk = createAsyncThunk<IUpdateResponse, IupdataProps, { rejectValue: string }>(
@@ -10,13 +9,18 @@ export const updateThunk = createAsyncThunk<IUpdateResponse, IupdataProps, { rej
   async ({ id, updatedData, resource }, ThunkAPI) => {
     try {
 
+      const body = {
+        data: updatedData,
+      };
+
       const res = await fetch(`${BASE_URL}/resource/${resource}/${id}`, {
+        
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "x-bypass-token": API_KEY,
         },
-        body: JSON.stringify({data:[updatedData]}),
+        body: JSON.stringify(body),
       });
 
       if (!res.ok) throw new Error("განახლება ვერ მოხერხდა");

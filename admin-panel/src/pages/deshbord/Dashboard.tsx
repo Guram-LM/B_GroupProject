@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { featchAnimals, featchKategori } from "../../store/get/getThunks"
-import { CardContent, CardWrapper, DeshbordStyle, GrirWrapper, ImgWrapper, PopulatStile } from "./style"
+import { AddAnimalHeder, AnimalsHeader, CardContent, CardWrapper, DeshbordStyle, GrirWrapper, ImgWrapper, PopulatStile } from "./style"
 
 export const Deshboard = () => {
 
@@ -20,7 +20,14 @@ export const Deshboard = () => {
     return(
        <DeshbordStyle>
 
-        <GrirWrapper>
+            <AnimalsHeader>
+                <h1>All Pets</h1>
+                <AddAnimalHeder to={"/animals"}>➕ Add New Pet</AddAnimalHeder>
+
+            </AnimalsHeader>
+
+            <GrirWrapper>
+
              {animals.map(item =>{ 
                 const category =kategori.find(cat => cat.id === item.categoryId)
                 const categoryName = category?.kategoryName || "Non category"

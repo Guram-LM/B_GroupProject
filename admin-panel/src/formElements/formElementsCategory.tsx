@@ -12,8 +12,11 @@ export const KategoryForm = ({value, onChange, onSubmit}: KategoryFormProps) => 
     return(
 
         <AnimalsForm onSubmit={onSubmit}>
-            <input type="text" name="kategoryName" placeholder="kategoryName" value={value.kategoryName} onChange={onChange}/>
-            <input type="text" name="description" placeholder="Description" value={value.description} onChange={onChange}/>
+            <h1>Add New Category</h1>
+            <label htmlFor="kategoryName">Kategory Name</label>
+            <input type="text" name="kategoryName"  value={value.kategoryName} onChange={onChange}/>
+            <label htmlFor="description">Description</label>
+            <input type="text" name="description" id="des" value={value.description} onChange={onChange}/>
 
             <ButtonWrapper>
                 <Addbutton>Add</Addbutton>
