@@ -1,6 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { featchAnimals } from "../../store/get/getThunks";
+import { Link } from "react-router-dom";
+import styles from "./style.module.css"
+import korb from "../../assets/korb.png"
+import herz from "../../assets/herz.png"
+import { useconverter } from "../../hook/ConverterHook";
+import type { IKorb } from "../../interface/Interface";
 
 
 export const HomePage =() => {
@@ -10,30 +16,71 @@ export const HomePage =() => {
     const dispatch = useAppDispatch()
     useEffect(() => {
         dispatch(featchAnimals({resource:"animals"}))
-
     },[])
+// ვალიტის კონვერტაცია
+    const { rate } = useconverter()
+    const [curensy, setCurensy] = useState<"GEL" | "USD" >("GEL")
+// ვალიტის კონვერტაცია
+
+
+// ვალიტის კარტის ლოკალსტორიჯიში დამატება
+
+    const [corb, setCorb] =useState<IKorb[]>(() => {
+        const lokaleKorb = localStorage.getItem("corb")
+        return lokaleKorb ? JSON.parse(lokaleKorb) : []
+    })
+
+    const AddCorb = (item:IKorb) => {
+        const newItem = [...corb, item]
+        setCorb(newItem)
+        localStorage.setItem("corb", JSON.stringify(newItem))
+    }
+
 
     if (loading) return <h1>Loading ...</h1>;
     if (error) return <h1>{error}</h1>;
+    return (
+        <div className={styles.container}>
+      <div>
+        <h1>Our Pets</h1>
+        <select value={curensy} onChange={(e) => setCurensy(e.target.value as "GEL" | "USD")}>
+          <option value="GEL">GEL</option>
+          <option value="USD">USD</option>
+        </select>
+      </div>
 
-    return(
+      <div className={styles.grid}>
+        {animals.map(item => {
+          const priceInUSD = rate ? (Number(item.price) * rate).toFixed(2) : null;
 
-        <div>
-            <h1>HomePage</h1>
-        
-        {animals.map(item =>
-            <div key={item.id}>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
-                <p>{item.gender}</p>
-                <p>{item.description}</p>
-                <p>{item.isPopular}</p>
-            
+          return (
+            <div key={item.id} className={`${styles.card} ${item.quantity === "0" ? styles.outOfStock : ""}`}>
+              <div className={styles.imageBox}>
+                <img src={item.img} alt={item.name} />
+                {item.quantity === "0" && <p className={styles.outOfStockText}>Out of Stock</p>}
+              </div>
+
+              <div className={styles.detailsSeqtion}>
+                <div className={styles.details}>
+                  <p>{item.name}</p>
+                  {curensy === "USD" && rate
+                    ? <p>USD {priceInUSD}</p>
+                    : <p>GEL {item.price}</p>
+                  }
+                </div>
+
+                <div className={styles.actions}>
+                  <Link className={styles.detailsButton} to="/">Details</Link>
+                  <div className={styles.icons}>
+                    <img src={herz} alt="heart" />
+                    <img src={korb} alt="cart" onClick={() => AddCorb(item)}/>
+                  </div>
+                </div>
+              </div>
             </div>
-        )}
-        </div>
-        
-    )
-
-    
-}
+          );
+        })}
+      </div>
+    </div>
+  );
+};
