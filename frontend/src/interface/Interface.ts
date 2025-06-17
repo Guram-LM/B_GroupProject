@@ -96,3 +96,10 @@ export interface IRowDataKategory {
     id: string,
     data: Ikategory
 }
+
+
+export interface IKorb {
+  img: string,
+  name: string,
+  price: string;
+}
