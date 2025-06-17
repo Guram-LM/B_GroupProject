@@ -7,6 +7,7 @@ import korb from "../../assets/korb.png"
 import herz from "../../assets/herz.png"
 import { useconverter } from "../../hook/ConverterHook";
 import type { IKorb } from "../../interface/Interface";
+import { addBasket } from "../../store/reduxBasket/ReduxBasket";
 
 
 export const HomePage =() => {
@@ -17,13 +18,14 @@ export const HomePage =() => {
     useEffect(() => {
         dispatch(featchAnimals({resource:"animals"}))
     },[])
+
 // ვალიტის კონვერტაცია
     const { rate } = useconverter()
     const [curensy, setCurensy] = useState<"GEL" | "USD" >("GEL")
 // ვალიტის კონვერტაცია
 
 
-// ვალიტის კარტის ლოკალსტორიჯიში დამატება
+// კარტის ლოკალსტორიჯიში დამატება
 
     const [corb, setCorb] =useState<IKorb[]>(() => {
         const lokaleKorb = localStorage.getItem("corb")
@@ -35,6 +37,7 @@ export const HomePage =() => {
         setCorb(newItem)
         localStorage.setItem("corb", JSON.stringify(newItem))
     }
+// კარტის ლოკალსტორიჯიში დამატება
 
 
     if (loading) return <h1>Loading ...</h1>;
@@ -73,7 +76,10 @@ export const HomePage =() => {
                   <Link className={styles.detailsButton} to="/">Details</Link>
                   <div className={styles.icons}>
                     <img src={herz} alt="heart" />
-                    <img src={korb} alt="cart" onClick={() => AddCorb(item)}/>
+                    <img src={korb} alt="cart" onClick={() => {
+                                                            AddCorb({ ...item, id: item.id! }); 
+                                                            dispatch(addBasket({ ...item, id: item.id! })); 
+                                                        }}/>
                   </div>
                 </div>
               </div>

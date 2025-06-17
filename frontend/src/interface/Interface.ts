@@ -99,7 +99,16 @@ export interface IRowDataKategory {
 
 
 export interface IKorb {
+  id: string,
   img: string,
   name: string,
   price: string;
+}
+
+export interface IReduxKorb {
+  id: string;
+  name: string;
+  price: string;
+  img: string;
+  quantity?: string;
 }

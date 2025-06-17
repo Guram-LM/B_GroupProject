@@ -1,14 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import slicePost from "./post/slicePost"
 import sliceGet from "./get/sliceGet"
-import sliceUpdate from "./update/SliceUpdate"
-import sliceDelete from "./delete/SliceDelete"
+import basketSlice from "./reduxBasket/ReduxBasket"
 
 const rootReduser = combineReducers({
-    post: slicePost,
+    
     get: sliceGet,
-    update: sliceUpdate,
-    delete: sliceDelete
+    basket: basketSlice,
+    
 
 })
 
