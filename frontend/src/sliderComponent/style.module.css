@@ -1,0 +1,15 @@
+/* SwiperSlider.module.css */
+:global(.swiper-pagination-progressbar) {
+  background: #ddd;
+  height: 4px;
+  top: 0;
+}
+
+:global(.swiper-pagination-progressbar-fill) {
+  background: red;
+}
+
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+  color: black;
+}
