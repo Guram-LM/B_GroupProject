@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import sliceGet from "./get/sliceGet"
 import basketSlice from "./reduxBasket/ReduxBasket"
+import wishlistSlice from "./redaxwishlist/redaxwishlist"
 
 const rootReduser = combineReducers({
     
     get: sliceGet,
     basket: basketSlice,
+    wishlist: wishlistSlice,
     
 
 })
