@@ -47,7 +47,7 @@ export const KategoriDeshboard = () => {
     if (error) return <h1>{error}</h1>;
     return(
         <FormPageStyle>
-            <Back to= {"/"}>&larr; Bck to Pets</Back>
+            <Back to= {"/"}>&larr; Back to Pets</Back>
             <KategoryForm value={kategoriValue} onChange={onChange} onSubmit={onSubmit} />
         </FormPageStyle>
         
