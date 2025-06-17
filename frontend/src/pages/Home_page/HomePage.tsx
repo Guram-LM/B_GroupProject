@@ -8,6 +8,7 @@ import herz from "../../assets/herz.png"
 import { useconverter } from "../../hook/ConverterHook";
 import { addBasket } from "../../store/reduxBasket/ReduxBasket";
 import { addWishlist } from "../../store/redaxwishlist/redaxwishlist";
+import SliderComponent from "../../sliderComponent/sliderComponent";
 
 
 export const HomePage =() => {
@@ -29,6 +30,8 @@ export const HomePage =() => {
     if (error) return <h1>{error}</h1>;
     return (
         <div className={styles.container}>
+
+          <SliderComponent/>
       <div>
         <h1>Our Pets</h1>
         <select value={curensy} onChange={(e) => setCurensy(e.target.value as "GEL" | "USD")}>
