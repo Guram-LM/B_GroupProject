@@ -3,13 +3,13 @@ import { useAppDispatch, useAppSelector } from "../../store/hook";
 import { featchAnimals } from "../../store/get/getThunks";
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "./style.module.css"
-import korb from "../../assets/korb.png"
-import herz from "../../assets/herz.png"
 import { useconverter } from "../../hook/ConverterHook";
 import { addBasket } from "../../store/reduxBasket/ReduxBasket";
 import { addWishlist } from "../../store/redaxwishlist/redaxwishlist";
 import SliderComponent from "../../sliderComponent/sliderComponent";
 import type { IItems } from "../../interface/Interface";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 
 
@@ -29,7 +29,7 @@ export const HomePage =() => {
 
     const { mode } = useOutletContext<{ mode: "light" | "dark" }>();
 
-
+   
     if (loading) return <h1>Loading ...</h1>;
     if (error) return <h1>{error}</h1>;
     return (
@@ -66,8 +66,16 @@ export const HomePage =() => {
                 <div className={styles.actions}>
                   <Link className={styles.detailsButton} to={`/animal/${item.id}`} >Details </Link>
                   <div className={styles.icons}>
-                    <img src={herz} alt="heart" onClick={() => dispatch(addWishlist({...item, id: item.id!}))} />
-                    <img src={korb} alt="cart" onClick={() => { dispatch(addBasket({ ...item, id: item.id! })); }}/>
+                    <AiOutlineHeart
+                      className={`${styles.icon} ${styles.heart}`}
+                      onClick={() => {dispatch(addWishlist({ ...item, id: item.id! }));
+                     toast.success("Add to wishlist") }}
+                    />
+                    <AiOutlineShoppingCart
+                      className={`${styles.icon} ${styles.cart}`}
+                      onClick={() => {dispatch(addBasket({ ...item, id: item.id! }));
+                    toast.success("Add to Card")}}
+                    />
                   </div>
                 </div>
               </div>

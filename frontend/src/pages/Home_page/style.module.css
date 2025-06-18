@@ -6,11 +6,11 @@
 
 .light {
   background-color: white;
-  color: black;
+  color: #1e1e1e;
 }
 
 .dark {
-  background-color: #121212;
+  background-color: #1e1e1e;
   color: white;
 }
 
@@ -21,11 +21,11 @@
 /* Define separate classes */
 .cardLight {
   background: white;
-  color: black;
+  color: #1e1e1e;
 }
 
 .cardDark {
-  background: black;
+  background: #1e1e1e;
   color: white;
 }
 
@@ -55,6 +55,7 @@
   transition: transform 0.3s ease;
   cursor: pointer;
   margin-top: 40px;
+  position: relative;
 }
 
 .card:hover {
@@ -63,9 +64,9 @@
 
 .imageBox {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
-  position: relative;
+  height: 50%;
+  overflow: hidden;
+  
 }
 
 .imageBox img {
@@ -78,7 +79,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   gap: 15px;
   padding: 15px;
 }
@@ -124,11 +124,19 @@
   align-items: center;
 }
 
-.icons img {
-  width: 24px;
-  height: 24px;
+.icon  {
   margin-left: 8px;
   cursor: pointer;
+  font-size: 24px;
+}
+
+.heart:hover {
+  color: red;
+}
+
+
+.cart:hover {
+  color: #ffcc00;
 }
 
 .outOfStock {
@@ -142,7 +150,7 @@
   display: inline-block;
   padding: 5px 10px;
   border-radius: 5px;
-  background-color: rgb(169, 169, 169);
+  background-color: rgb(129, 51, 51);
   position: absolute;
   top: 10px;
   right: 10px;

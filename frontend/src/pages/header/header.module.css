@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.header {
+ position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(67, 104, 70);
+  color: white;
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  z-index: 1000;
+  gap:150px;
+}
+
+.title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 24px;
+  background: linear-gradient(
+    90deg,
+    rgb(244, 202, 96),
+    hsl(51, 91.6%, 72%),
+    rgb(255, 248, 221),
+    rgb(248, 225, 124),
+    rgb(251, 213, 117)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -150% 0;
+  }
+  50% {
+    background-position: 150% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+  font-size: 19px;
+}
+
+.corbCount {
+  background-color: #ffcc00;
+  border-radius: 140px;
+  display: flex;
+  position: absolute;
+  top: -15px;
+  right: 8px;
+  padding: 0px 6px;
+  color: rgb(92, 121, 79);
+  font-size: 12px;
+  font-weight: bolder;
+}
+
+.wishlist {
+  background-color: #ffcc00;
+  display: flex;
+  position: absolute;
+  top: -15px;
+  right: 95px;
+  padding: 0 6px;
+  color: rgb(92, 121, 79);
+  font-size: 12px;
+  font-weight: bolder;
+  border-radius: 140px;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #ffd700;
+}
+
+.active {
+  color: #ffd700;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+  font-weight: bold;
+}
