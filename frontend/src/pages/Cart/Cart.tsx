@@ -1,53 +1,77 @@
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/hook";
+import { clearBaskit, removeBasket } from "../../store/reduxBasket/ReduxBasket";
+import { updateThunk } from "../../store/update/UpdateThanks";
+import styles from "./Cart.module.css";
+export const Cart = () => {
+  const corbItem = useAppSelector((state) => state.basket.items);
+  const allAnimals = useAppSelector((state) => state.get.animals);
 
-import { useAppDispatch, useAppSelector } from "../../store/hook"
-import { clearBaskit, removeBasket } from "../../store/reduxBasket/ReduxBasket"
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-export const Cart =() => {
+  const handleBuyNow = (item: typeof corbItem[number]) => {
+    const fullAnimal = allAnimals.find((animal) => animal.id === item.id);
+    if (!fullAnimal || !item.quantity) return;
 
-   
-const corbItem = useAppSelector(state => state.basket.items)
-   
-   const dispatch = useAppDispatch()
+    const originalQuantity = Number(item.quantity);
 
-    return(
-        <div>
-            {corbItem.length === 0 ? (
-                <p>Your cart is empty</p>
-            ) : (
-                <div>
-                    <div>
-                        {corbItem.map(item => 
-                            <div key={item.id}>
-                                <div>
+    // ✅ დამატებული შემოწმება
+    if (originalQuantity <= 0) {
+      console.warn("Product is out of stock, cannot buy");
+      return;
+    }
 
-                                    <div>
-                                        <img src={item.img} alt="" />
-                                    </div>
+    const updatedQuantity = (originalQuantity - 1).toString();
+    console.log(`Buying ${item.name}, new quantity will be: ${updatedQuantity}`);
 
-                                    <div>
-                                        <p>{item.name}</p>
-                                        <p>{item.price}</p>
-                                    </div>
-
-                                </div>
-
-                                <div>
-                                    <button>Buy Now</button>
-                                    <button onClick={() => dispatch(removeBasket(item.id))}>Remove</button>
-                                </div>
-
-                            </div>
-                        )}
-                    </div>
-
-                    <div>
-                        <button onClick={() =>  dispatch(clearBaskit())}>Clear All</button>
-                    </div>
-
-                </div>
-            )
-            }
-
-        </div>
+    dispatch(
+      updateThunk({
+        id: item.id,
+        resource: "animals",
+        updatedData: {
+          ...fullAnimal,
+          quantity: updatedQuantity,
+        },
+      })
     )
-}
+      .unwrap()
+      .then(() => {
+        dispatch(removeBasket(item.id));
+        navigate("/");
+      })
+      .catch((err) => console.error("Update failed", err));
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.cartTitle}>Your Cart</h1>
+      {corbItem.length === 0 ? (
+        <p className={styles.emptyMessage}>Your cart is empty.</p>
+      ) : (
+        <>
+          <div className={styles.itemsList}>
+            {corbItem.map((item) => (
+              <div key={item.id} className={styles.card}>
+                <img src={item.img} alt={item.name} className={styles.image} />
+                <div className={styles.details}>
+                  <p className={styles.name}>{item.name}</p>
+                  <p className={styles.price}>{item.price} GEL</p>
+                </div>
+
+                <div className={styles.actions}>
+                  <button className={styles.buyBtn} onClick={() => handleBuyNow(item)}>Buy Now</button>
+                  <button className={styles.removeBtn} onClick={() => dispatch(removeBasket(item.id))}>Remove</button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.clearAll}>
+            <button className={styles.clearBtn} onClick={() => dispatch(clearBaskit())}>Clear All</button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
