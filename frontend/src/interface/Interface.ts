@@ -1,4 +1,5 @@
 export interface IAnimals {
+    [x: string]: ReactNode;
     id?: string,
     img: string,
     name: string;

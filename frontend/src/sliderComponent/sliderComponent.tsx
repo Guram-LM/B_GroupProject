@@ -1,44 +1,39 @@
-// SwiperComponent.tsx
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./sliderStyles.css";
 
-// Swiper CSS
-// @ts-ignore
-import 'swiper/css';
-// @ts-ignore
-import 'swiper/css/pagination';
-// @ts-ignore
-import 'swiper/css/navigation';
+type Animal = {
+  id: string | number | undefined;
+  img: string;
+  name: string;
+  description?: string;
+};
 
-
-export default function SwiperComponent() {
-  // მაგიდის მაგალითი სურათები, შეგიძლია შეცვალო შენი მონაცემებით
-  const slides = [
-    'https://picsum.photos/id/1018/600/300',
-    'https://picsum.photos/id/1015/600/300',
-    'https://picsum.photos/id/1019/600/300',
-  ];
-
+const SliderComponent = ({ animals }: { animals: Animal[] }) => {
   return (
     <Swiper
       modules={[Pagination, Navigation, Autoplay]}
-      pagination={{ type: 'progressbar' }}
-      navigation={true}
-      loop={true}
+      pagination={{ type: "progressbar" }}
+      navigation
+      loop
       autoplay={{ delay: 2500, disableOnInteraction: false }}
       slidesPerView={1}
-      style={{ width: '600px', height: '300px' }}
+      className="custom-swiper"
     >
-      {slides.map((url, index) => (
-        <SwiperSlide key={index}>
-          <img
-            src={url}
-            alt={`Slide ${index + 1}`}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          />
+      {animals.map((animal) => (
+        <SwiperSlide key={animal.id} className="custom-slide">
+          <img src={animal.img} alt={animal.name} className="slide-image" />
+          <div className="text-overlay">
+            <h3>{animal.name}</h3>
+            <p>{animal.description || "Beautiful animal waiting for a home."}</p>
+          </div>
         </SwiperSlide>
       ))}
     </Swiper>
   );
-}
+};
+
+export default SliderComponent;

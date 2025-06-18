@@ -24,15 +24,16 @@ export const FrontLeyout = () => {
           </Link>
         </nav>
       </header>
-
-      <Outlet />
+<main className={styles.mainContent}>
+  <Outlet />
+</main>
 
       <footer className={styles.footer}>
         <div className={styles.footerSection}>
           <h2 className={styles.footerHeading}>About PetShop</h2>
           <p>
-            We're dedicated to connecting loving homes with wonderful pets.
-            Our mission is to ensure every pet finds a caring family.
+            We're dedicated to connecting <br></br>loving homes with wonderful pets.<br></br>
+            Our mission is to ensure every pet <br></br>finds a caring family.
           </p>
         </div>
 
