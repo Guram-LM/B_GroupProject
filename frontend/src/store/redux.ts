@@ -1,13 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import sliceGet from "./get/sliceGet"
-import basketSlice from "./reduxBasket/ReduxBasket"
-import wishlistSlice from "./redaxwishlist/redaxwishlist"
+import sliceGet from "./get/sliceGet";
+import basketSlice from "./reduxBasket/ReduxBasket";
+import wishlistSlice from "./redaxwishlist/redaxwishlist";
+import sliceUpdate from "./update/SliceUpdate";
+import themeSlice from "./light&dark/LigtDarkSlice"
 
 const rootReduser = combineReducers({
     
     get: sliceGet,
+    update: sliceUpdate,
     basket: basketSlice,
     wishlist: wishlistSlice,
+    dark_light: themeSlice
     
 
 })
