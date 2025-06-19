@@ -6,6 +6,8 @@ import { AnimalDetailsPage } from "./pages/Details/AnimalDetailsPage"
 import { FrontLayout } from "./pages/FrontLeyout/FrontLeyout"
 import { ToastContainer } from "react-toastify"
 import { useAppSelector } from "./store/hook"
+import { CheckoutPage } from "./pages/CheckoutPage/CheckoutPage"
+import { ErfolgPage } from "./pages/erfolgreich/Erfolg"
 
 
 
@@ -15,7 +17,7 @@ function App() {
  
   return (
   <>
-  <ToastContainer 
+    <ToastContainer 
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -32,6 +34,8 @@ function App() {
       <Route path="wishlist" element={<Wishlist/>}/>
       <Route path="cart" element={<Cart/>}/>
       <Route path="animal/:id" element={<AnimalDetailsPage />} />
+      <Route path="checkout" element={<CheckoutPage />} />
+      <Route path="erfolgPage" element={<ErfolgPage />} />
       </Route>
      </Routes>
    </>
