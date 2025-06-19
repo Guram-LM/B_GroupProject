@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormStyle, LoginWrapper, SubmitButton, Title, ValidationPage } from "./style";
+import { toast } from "react-toastify";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ export function Login() {
       localStorage.setItem("auth", "true");
       navigate("/", { replace: true });
     } else {
-      alert("Არასწორი ელფოსტა ან პაროლი");
+      toast.info("Არასწორი ელფოსტა ან პაროლი");
     }
   };
 

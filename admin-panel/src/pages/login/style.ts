@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from "../../assets/bacgr.jpg"; 
+import background from "../../assets/Padlock.jpg"; 
 
 
 export const ValidationPage = styled.div`
@@ -24,8 +24,10 @@ export const LoginWrapper = styled.div`
   text-align: center;
 `
 export const Title = styled.h2`
-  margin-bottom: 15px;
-  color: #333;
+  margin-bottom: 16px;
+  font-size: 28px;
+  color: white;
+  font-weight: bolder;
 `
 export const FormStyle = styled.form`
   display: flex;

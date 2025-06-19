@@ -6,6 +6,7 @@ import { postThunk } from "../store/post/postThunks";
 import { featchKategori } from "../store/get/getThunks";
 import { FormPageStyle } from "../formElements/StyledInputs";
 import { Back } from "./detailed/Style";
+import { toast } from "react-toastify";
 
 export const AnimalsDeshboard = () => {
   const dispatch = useAppDispatch();
@@ -47,7 +48,7 @@ export const AnimalsDeshboard = () => {
     const action = await dispatch(postThunk({ resource: "animals", formData: value }));
 
     if (postThunk.fulfilled.match(action)) {
-      alert("Successful");
+      toast.success("Successful");
       setvalue({ 
         img: "",
         name: "",
@@ -65,7 +66,7 @@ export const AnimalsDeshboard = () => {
         categoryId: ""
       });
     } else {
-      alert("Rejected: " + (action.payload || "დაფიქსირდა შეცდომა"));
+      toast.info("Rejected: " + (action.payload || "დაფიქსირდა შეცდომა"));
     }
   };
 

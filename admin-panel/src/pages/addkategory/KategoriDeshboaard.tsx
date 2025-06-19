@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hook"
 import { postThunk } from "../../store/post/postThunks"
 import { Back } from "../detailed/Style"
 import { FormPageStyle } from "../../formElements/StyledInputs"
+import { toast } from "react-toastify"
 
 export const KategoriDeshboard = () => {
 
@@ -31,13 +32,13 @@ export const KategoriDeshboard = () => {
         const action = await dispatch(postThunk({resource: "kategory", formData: kategoriValue}))
 
         if(postThunk.fulfilled.match(action)){
-            alert("Successful");
+            toast.success("Successful");
             setKategoriValue({
                 kategoryName: "",
                 description: "" 
             })
         } else {
-            alert("Rejected: " + (action.payload || "დაფიქსირდა შეცდომა"));
+            toast.info("Rejected: " + (action.payload || "დაფიქსირდა შეცდომა"));
         }
 
     }

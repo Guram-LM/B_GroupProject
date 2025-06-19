@@ -9,34 +9,47 @@ import { CategoryPage } from "./pages/category/CategoryPage"
 import { EditCategory } from "./pages/editCategory/EditCategory"
 import { Login } from "./pages/login/Login"
 import { Validation } from "./pages/login/Isvalid"
+import { ToastContainer } from "react-toastify"
 
 
 function App() {
   
   return (
-    <Routes>
+    <>
+      <ToastContainer 
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnHover
+          draggable
+        />
+      <Routes>
 
-      <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login />} />
 
-      
+        
 
-      <Route path="/" element={
-        <Validation>
-          <AdminLayout />
-        </Validation>
-      }>
+        <Route path="/" element={
+          <Validation>
+            <AdminLayout />
+          </Validation>
+        }>
 
-        <Route index element={<Deshboard/>} />
-        <Route path="animals" element={<AnimalsDeshboard/>} />
-        <Route path="kategori" element={<KategoriDeshboard/>} />
-        <Route path="category" element={<CategoryPage/>} />
-        <Route path="detailedPage/:id" element={<DetailedPage/>} />
-        <Route path="edit" element={<EditdPage/>} />
-        <Route path="editCategory" element={<EditCategory/>} />
+          <Route index element={<Deshboard/>} />
+          <Route path="animals" element={<AnimalsDeshboard/>} />
+          <Route path="kategori" element={<KategoriDeshboard/>} />
+          <Route path="category" element={<CategoryPage/>} />
+          <Route path="detailedPage/:id" element={<DetailedPage/>} />
+          <Route path="edit" element={<EditdPage/>} />
+          <Route path="editCategory" element={<EditCategory/>} />
 
-      </Route>
+        </Route>
 
-    </Routes>
+      </Routes>
+
+    </>
     
   )
 }

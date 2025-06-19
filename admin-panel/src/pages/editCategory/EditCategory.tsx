@@ -6,7 +6,6 @@ import { Back } from "../detailed/Style"
 import type { Ikategory, IkategoryId } from "../../interface/Interface"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAppDispatch } from "../../store/hook"
-import { featchKategori } from "../../store/get/getThunks"
 
 export const EditCategory = () => {
   const location = useLocation()
