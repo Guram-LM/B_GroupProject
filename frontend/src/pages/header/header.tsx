@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store/hook";
 import styles from "./header.module.css";
 import { appTheme } from "../../store/light&dark/LigtDarkSlice";
@@ -13,9 +13,14 @@ export const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/"
 
+  
+
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>PetShop</h1>
+      <div className={styles.headerContant}>
+        <Link to={"/"}>
+          <h1 className={styles.title}>PetShop</h1>
+        </Link>
       <nav className={styles.nav}>
         <NavLink to="/" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>Home</NavLink>
         <NavLink to="/wishlist" className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}>
@@ -28,7 +33,9 @@ export const Header = () => {
       {!isHomePage && <button onClick={() => dispatch(appTheme())}>
               {mode === "dark" ? "☀️" : "🌙"}
             </button>}
+            </div>
     </header>
+ 
   );
 };
 
