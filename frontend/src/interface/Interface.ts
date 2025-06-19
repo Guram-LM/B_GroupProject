@@ -112,3 +112,12 @@ export interface IReduxKorb {
   img: string;
   quantity?: string;
 }
+
+export interface IReduxUsd {
+  id: string;
+  name: string;
+  price: string;
+  img: string;
+  quantity?: string;
+  currency?: "GEL" | "USD"; 
+}
